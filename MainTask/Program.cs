@@ -11,7 +11,7 @@ int Length(string arg)
     while(!int.TryParse(Console.ReadLine(), out num) || num < 1)
     {
         System.Console.WriteLine("It's not a number or incorrect data!");
-        System.Console.Write($"{arg}: ");
+        System.Console.Write($"{arg}");
     }
     return num;
 }
@@ -27,6 +27,7 @@ string[] CreateArray()
 
 void FillArray(string[] array)
 {
+    System.Console.WriteLine();
     int elems = 1;
     for (int i = 0; i < array.Length; i++)
     {
@@ -44,6 +45,58 @@ void PrintArray(string[] array)
     {
         System.Console.Write(array[i] + ", ");
     }
-    System.Console.Write(array[array.Length - 1] + "]" + " --> ");
+    System.Console.Write(array[array.Length - 1] + "]" + "  -->  ");
      
 }
+
+int CountOfElems(string[] array)
+{
+    int count = 0;
+    for (int i = 0; i < array.Length; i++)
+    {
+        if(array[i].Length <= 3)
+        {
+            count++;
+        }
+    }
+    return count;
+}
+
+string[] Main(int a, string[] array)
+{
+    string[] nullElements = {};
+    int count = 0;
+    string[] elements = new string[a];
+    if(a == 0) return nullElements;
+    else
+    {
+        for (int i = 0; i < array.Length; i++)
+        {
+            if(array[i].Length <= 3)
+            {
+                elements[count] += array[i];
+                count++;
+            }
+        }
+        return elements;
+    }
+}
+
+void PrintMiniArray(string[] array)
+{
+    if(array.Length == 0) System.Console.Write("[]");
+    else
+    {
+        System.Console.Write("[");
+        for (int i = 0; i < array.Length - 1; i++)
+        {
+            System.Console.Write(array[i] + ", ");
+        }
+        System.Console.Write(array[array.Length - 1] + "]");
+    }
+}
+
+string[] strings = CreateArray();
+FillArray(strings);
+PrintArray(strings);
+PrintMiniArray(Main(CountOfElems(strings), strings));
