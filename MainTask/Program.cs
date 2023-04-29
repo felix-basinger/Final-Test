@@ -64,7 +64,6 @@ int CountOfElems(string[] array)
 
 string[] Main(int a, string[] array)
 {
-    // string[] nullElements = {};
     int count = 0;
     string[] elements = new string[a];
     if(a == 0) return elements;
