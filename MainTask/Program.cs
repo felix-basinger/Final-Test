@@ -66,19 +66,15 @@ string[] Main(int a, string[] array)
 {
     int count = 0;
     string[] elements = new string[a];
-    if(a == 0) return elements;
-    else
+    for (int i = 0; i < array.Length; i++)
     {
-        for (int i = 0; i < array.Length; i++)
+        if(array[i].Length <= 3)
         {
-            if(array[i].Length <= 3)
-            {
-                elements[count] += array[i];
-                count++;
-            }
+            elements[count] += array[i];
+            count++;
         }
-        return elements;
     }
+    return elements;
 }
 
 void PrintMiniArray(string[] array)
